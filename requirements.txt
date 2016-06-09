@@ -1,0 +1,4 @@
+slacker
+requests
+Flask
+Jinja2
