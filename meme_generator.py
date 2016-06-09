@@ -49,6 +49,6 @@ def parse_message(message):
         meme_text.insert(0, available_memes[randint(0, len(available_memes))])
 
     if len(meme_text) < 3:
-        meme_text += [None] * (2 - len(meme_text))
+        meme_text += [None] * (3 - len(meme_text))
 
     return meme_text[0], meme_text[1], meme_text[2]
