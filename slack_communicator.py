@@ -1,7 +1,8 @@
+import os
 from pprint import pprint
 from slacker import Slacker
-from settings import SLACK_API_TOKEN
 
+SLACK_API_TOKEN = os.environ.get("SLACK_API_TOKEN")
 slack = Slacker(SLACK_API_TOKEN)
 
 

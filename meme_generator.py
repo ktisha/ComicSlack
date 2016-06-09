@@ -1,9 +1,9 @@
-from urllib.parse import unquote_plus, quote, unquote
+import os
+from urllib.parse import unquote
 
 import requests
 
-from settings import MEME_BASE_URL
-
+MEME_BASE_URL = os.environ.get("MEME_BASE_URL")
 
 def get_memes():
     response = requests.get(MEME_BASE_URL + "/templates").json()

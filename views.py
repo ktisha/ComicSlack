@@ -6,11 +6,11 @@ from flask.templating import render_template
 from slacker import Slacker
 
 from meme_generator import *
-from settings import SLACK_WEBHOOK_URL, SLACK_API_TOKEN
-from slack_communicator import get_direct_messages, get_user_map, get_user, post_meme_to_webhook
+from slack_communicator import get_direct_messages, get_user_map, get_user
 
 app = Flask(__name__)
-
+SLACK_API_TOKEN = os.environ.get("SLACK_API_TOKEN")
+SLACK_WEBHOOK_URL = os.environ.get("SLACK_WEBHOOK_URL")
 
 @app.route("/meme")
 def meme():
