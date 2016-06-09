@@ -30,19 +30,8 @@ def list_memes():
     return help_text
 
 
-def build_url(template, top, bottom, alt=None):
-    path = "/{0}/{1}/{2}.jpg".format(template, top or '_', bottom or '_')
-
-    if alt:
-        path += "?alt={}".format(alt)
-
-    url = MEME_BASE_URL + path
-
-    return url
-
-
-def error():
-    return "That template doesn't exist. Type `/meme templates` to see valid templates"
+def build_url(template, top, bottom):
+    return MEME_BASE_URL + "/{0}/{1}/{2}.jpg".format(template, top or '_', bottom or '_')
 
 
 def parse_message(message):
