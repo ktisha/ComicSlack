@@ -46,7 +46,7 @@ def parse_message(message):
     available_memes = [x[0] for x in get_memes()]
 
     if meme_text[0] not in available_memes:
-        meme_text.insert(0, available_memes[randint(len(available_memes))])
+        meme_text.insert(0, available_memes[randint(0, len(available_memes))])
 
     if len(meme_text) < 3:
         meme_text += [None] * (2 - len(meme_text))
