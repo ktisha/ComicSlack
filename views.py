@@ -40,23 +40,6 @@ def meme():
     return "Success!", 200
 
 
-@app.route("/")
-def hello():
-    # text = request.args["text"]
-    messages_count = 10#parse_comics_message(text)
-
-    slack = Slacker(SLACK_API_TOKEN)
-    user_id_name_map = get_user_map(slack)
-    user_name_id = {v: k for k, v in user_id_name_map.items()}
-
-    messages = get_direct_messages(slack, user_id_name_map, 'ktisha')
-    messages = messages[-messages_count:]
-
-    comix = render_template("base.html", title=messages[0]['text'], messages=messages, user1=user_name_id['stan'],
-                                           user2=user_name_id['ktisha'])
-    return comix
-
-
 @app.route("/comics")
 def comics():
     channel_id = request.args["channel_id"]
@@ -73,3 +56,21 @@ def comics():
         return e
 
     return "Success!", 200
+
+
+@app.route("/")
+def hello():
+    # text = request.args["text"]
+    messages_count = 10#parse_comics_message(text)
+
+    slack = Slacker(SLACK_API_TOKEN)
+    user_id_name_map = get_user_map(slack)
+    user_name_id = {v: k for k, v in user_id_name_map.items()}
+
+    messages = get_direct_messages(slack, user_id_name_map, 'ktisha')
+    messages = messages[-messages_count:]
+
+    comix = render_template("base.html", title=messages[0]['text'], messages=messages, user1=user_name_id['stan'],
+                                           user2=user_name_id['ktisha'])
+    return comix
+
