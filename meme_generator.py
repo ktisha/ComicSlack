@@ -1,6 +1,6 @@
 import os
 from random import randint
-from urllib.parse import unquote
+from urllib.parse import unquote, quote
 
 import requests
 
@@ -42,8 +42,12 @@ def parse_message(message):
     meme_text = message.split("&")
 
     meme_text = [x.strip() for x in meme_text]
-
+    meme_text = [x.replace(" ", "_") for x in meme_text]
     available_memes = [x[0] for x in get_memes()]
+
+    text = [quote(x.encode("utf8")) for x in meme_text[1:]]
+    meme_text = [meme_text[0]]
+    meme_text.extend(text)
 
     if meme_text[0] not in available_memes:
         meme_text.insert(0, available_memes[randint(0, len(available_memes))])
