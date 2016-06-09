@@ -4,7 +4,6 @@ from flask import Flask, request
 from flask.templating import render_template
 from slacker import Slacker
 
-from comics_generator import parse_comics_message
 from meme_generator import *
 from slack_communicator import get_direct_messages, get_user_map, get_user
 
@@ -58,7 +57,7 @@ def hello():
     return comix
 
 
-@app.route("/")
+@app.route("/comics")
 def comics():
     channel_id = request.args["channel_id"]
     user_id = request.args["user_id"]
