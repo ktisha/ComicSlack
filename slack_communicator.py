@@ -1,5 +1,4 @@
 import os
-from pprint import pprint
 from slacker import Slacker
 
 SLACK_API_TOKEN = os.environ.get("SLACK_API_TOKEN")
@@ -53,9 +52,9 @@ def get_user(user_id):
             return {"username": user['name'], "icon_url": user['profile']['image_48']}
 
 
-if __name__ == '__main__':
-    slack = Slacker(SLACK_API_TOKEN)
-    user_id_name_map = get_user_map(slack)
-
-    messages = get_direct_messages(slack, user_id_name_map, 'franny')
-    pprint(messages)
+# if __name__ == '__main__':
+#     slack = Slacker(SLACK_API_TOKEN)
+#     user_id_name_map = get_user_map(slack)
+#
+#     messages = get_direct_messages(slack, user_id_name_map, 'franny')
+#     pprint(messages)

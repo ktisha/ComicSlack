@@ -10,7 +10,7 @@ from slack_communicator import get_direct_messages, get_user_map, get_user
 
 app = Flask(__name__)
 SLACK_API_TOKEN = os.environ.get("SLACK_API_TOKEN")
-SLACK_WEBHOOK_URL = os.environ.get("SLACK_WEBHOOK_URL")
+SLACK_MEME_WEBHOOK_URL = os.environ.get("SLACK_MEME_WEBHOOK_URL")
 
 
 @app.route("/meme")
@@ -33,7 +33,7 @@ def meme():
     payload.update({"attachments": attachments})
 
     try:
-        requests.post(SLACK_WEBHOOK_URL, data=json.dumps(payload))
+        requests.post(SLACK_MEME_WEBHOOK_URL, data=json.dumps(payload))
     except Exception as e:
         return e
 
