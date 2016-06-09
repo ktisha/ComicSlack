@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg class="cmx-canvas" width="270" height="390" version="1.1" xmlns="http://www.w3.org/2000/svg"
      viewBox="0 0 270 390"><defs><style type="text/css"><![CDATA[
-@font-face { font-family: xkcd; src: url("http://0.0.0.0:5000/static/fonts/xkcd.woff") font-weight: normal; font-style: normal; }
+@font-face { font-family: xkcd; src: url("http://comics-slack.herokuapp.com/static/fonts/xkcd.woff") font-weight: normal; font-style: normal; }
 .cmx-path { fill: none; stroke-width: 2.5px; stroke-linecap: round; stroke-linejoin: round; }
 .cmx-back { stroke: white; }
 .cmx-back .cmx-text { shape-rendering: optimizeSpeed; text-rendering: optimizeSpeed; fill: none; stroke-opacity: 1; stroke-width: 8px; stroke-linecap: butt; stroke-linejoin: miter; }
