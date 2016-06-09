@@ -6,7 +6,7 @@ from flask.templating import render_template
 from slacker import Slacker
 
 from meme_generator import *
-from settings import SLACK_WEBHOOK_URL
+from settings import SLACK_WEBHOOK_URL, SLACK_API_TOKEN
 from slack_communicator import get_direct_messages, get_user_map, get_user, post_meme_to_webhook
 
 app = Flask(__name__)
@@ -41,7 +41,7 @@ def meme():
 
 @app.route("/")
 def hello():
-    slack = Slacker('xoxp-48784475313-48780293991-48732636563-5803262f4f')
+    slack = Slacker(SLACK_API_TOKEN)
     user_id_name_map = get_user_map(slack)
     user_name_id = {v: k for k, v in user_id_name_map.items()}
 
