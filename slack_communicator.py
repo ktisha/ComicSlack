@@ -50,6 +50,7 @@ def get_user(user_id):
     for user in users:
         if user['id'] == user_id:
             return {"username": user['name'], "icon_url": user['profile']['image_48']}
+    return {}
 
 
 # if __name__ == '__main__':
