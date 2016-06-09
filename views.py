@@ -64,7 +64,7 @@ def comics():
     payload = get_user(user_id)
     payload["channel"] = channel_id
 
-    attachments = [{"image_url": "http://comics-slack.herokuapp.com/static/diagram.svg", "fallback": "Oops. Try  again."}]
+    attachments = [{"image_url": "http://comics-slack.herokuapp.com/static/diagram.png", "fallback": "Oops. Try  again."}]
     payload.update({"attachments": attachments})
 
     try:
