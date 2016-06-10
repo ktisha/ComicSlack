@@ -4,89 +4,20 @@
 
 <script type="text/javascript" src="static/cmx.js" charset="utf-8"></script>
 <script type="text/javascript" src="static/saveSvgAsPng.js" charset="utf-8"></script>
-<script>function saveAsPng(){
-    saveSvgAsPng(document.getElementsByClassName('cmx-canvas')[0], "diagram.svg");
-  }
-
-</script>
+{#<script>function saveAsPng(){#}
+{#    saveSvgAsPng(document.getElementsByClassName('cmx-canvas')[0], "diagram.svg");#}
+{#  }#}
+{##}
+{#</script>#}
 <style>.cmx-user-scene4 .cmx-text-border .cmx-path {stroke: orange}</style>
 
 <body>
-<button onclick="saveAsPng()">CLICK ME</button>
+{#<button onclick="saveAsPng()">CLICK ME</button>#}
 <div style="max-width:900px; -webkit-transform:rotate(0deg)">
-    <scene id="scene1">
-        <!-- TITLE -->
-        <label t="translate(0,346)">
-            <tspan x="0" y="0em">{{ title }}</tspan>
-        </label>
-
-         <!-- Green line -->
-        <drawing t="translate(0,31)">
-            <line stroke="black">
-                <point x="0" y="0"></point>
-                <point x="250" y="20"></point>
-            </line>
-        </drawing>
-
-        <!-- USER 1 -->
-        <actor t="translate(71,19) rotate(-2)"
-               pose="-11,9|-5,117|-11,99|-11,89|-11,79|-11,59|-16,34|-21,9|-6,34|-1,9|-18,79|-18,59|-6,79|-1,59">
-
-            <!-- MESSAGE -->
-            <bubble t="translate(9,11)" pose="0,0|-20,10|-81,49|19,66|-21,145|-73,109">
-                {% for m in messages %}
-                    {% if m['user'] == user1 %}
-                        <tspan x="0" y="{{2*loop.index-5}}em">{{m['text']}}</tspan>
-                    {% endif %}
-                {% endfor %}
-            </bubble>
-        </actor>
-
-        <!--USER 2-->
-        <actor t="translate(159,15)"
-               pose="28,1|30,109|28,91|28,81|28,71|28,51|18,31|18,1|33,26|38,1|23,71|18,51|38,71|38,51">
-
-            <!--MESSAGES-->
-            <bubble t="translate(-2,-9)" pose="0,0|-14,24|-36,69|27,28|8,72|-35,93">
-                {% for m in messages %}
-                    {% if m['user'] == user2 %}
-                        <tspan x="0" y="{{2*loop.index-7}}em">{{m['text']}}</tspan>
-                    {% endif %}
-                {% endfor %}
-            </bubble>
-        </actor>
-    </scene>
-
-    <!--<scene id="scene2">-->
-        <!--<drawing t="translate(0,31)">-->
-            <!--<line stroke="green">-->
-                <!--<point x="0" y="0"></point>-->
-                <!--<point x="250" y="20"></point>-->
-            <!--</line>-->
-        <!--</drawing>-->
-        <!--<actor t="translate(71,19) rotate(-2)"-->
-               <!--pose="-11,9|-1,114|-11,99|-11,89|-11,79|-11,59|-16,34|-21,9|-6,34|-1,9|-18,79|-18,59|-6,79|13,83">-->
-            <!--<bubble t="translate(-3,0)" pose="0,0|-12,22|-83,104|45,21|-37,182|-58,162">-->
-                <!--<tspan x="0" y="-2em">Yes!-->
-                    <!--<tspan x="0" y="0em">people would use</tspan>-->
-                    <!--<tspan x="0" y="1em">simple HTML markup</tspan>-->
-                    <!--<tspan x="0" y="2em">and collaborate</tspan>-->
-                    <!--<tspan x="0" y="3em">on-->
-                        <!--<tspan fill="blue">github</tspan>-->
-                    <!--</tspan>-->
-                <!--</tspan>-->
-            <!--</bubble>-->
-        <!--</actor>-->
-        <!--<actor t="translate(159,15)"-->
-               <!--pose="28,1|30,109|28,91|28,81|28,71|28,51|18,31|13,1|33,26|38,1|23,71|18,51|38,71|38,51">-->
-            <!--<bubble t="translate(-2,-9)" pose="0,0|7,33|14,66|-63,30|-52,62|-94,113">-->
-                <!--<tspan x="0" y="1em">hmm, cool! that</tspan>-->
-                <!--<tspan x="0" y="2em">sounds like an easy</tspan>-->
-                <!--<tspan x="0" y="3em" fill="red">weekend project</tspan>-->
-            <!--</bubble>-->
-        <!--</actor>-->
-    <!--</scene>-->
-
+    {% for scene in range(scenes) %}
+        {% set path = 'scene%s.html' % (scene + 1) %}
+        {% include path %}
+    {% endfor %}
 
 </div>
 </body>

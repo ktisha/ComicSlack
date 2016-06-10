@@ -4,6 +4,7 @@ from flask import Flask, request
 from flask.templating import render_template
 from slacker import Slacker
 
+from comics_generator import parse_comics_message
 from meme_generator import *
 from slack_communicator import get_direct_messages, get_user_map, get_user
 
@@ -60,8 +61,8 @@ def comics():
 
 @app.route("/")
 def hello():
-    # text = request.args["text"]
-    messages_count = 10#parse_comics_message(text)
+    text = request.args["text"]
+    messages_count, scenes, title = parse_comics_message(text)
 
     slack = Slacker(SLACK_API_TOKEN)
     user_id_name_map = get_user_map(slack)
@@ -70,7 +71,7 @@ def hello():
     messages = get_direct_messages(slack, user_id_name_map, 'ktisha')
     messages = messages[-messages_count:]
 
-    comix = render_template("base.html", title=messages[0]['text'], messages=messages, user1=user_name_id['stan'],
-                                           user2=user_name_id['ktisha'])
+    comix = render_template("base.html", title=title, messages=messages, user1=user_name_id['stan'],
+                                           user2=user_name_id['ktisha'], id1=1, scenes=scenes)
     return comix
 
