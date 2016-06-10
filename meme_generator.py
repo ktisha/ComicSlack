@@ -31,8 +31,13 @@ def list_memes():
     return help_text
 
 
-def build_url(template, top, bottom):
-    return MEME_BASE_URL + "/{0}/{1}/{2}.jpg".format(template, top or '_', bottom or '_')
+def build_url(meme, top, bottom):
+    if meme is "johnshow":
+        path = "/{0}/{1}/{2}.jpg".format(meme, top or '_', bottom or '_')
+        path += "?alt=http://images-cdn.moviepilot.com/images/c_fill,h_720,w_1280/t_mp_quality/qgqpal5akpm621tdsmlt/if-this-theory-s-true-then-jon-snow-is-definitely-dead-607536.jpg"
+        return MEME_BASE_URL + path
+
+    return MEME_BASE_URL + "/{0}/{1}/{2}.jpg".format(meme, top or '_', bottom or '_')
 
 
 def parse_message(message):
