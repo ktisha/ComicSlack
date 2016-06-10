@@ -71,7 +71,11 @@ def hello():
     messages = get_direct_messages(slack, user_id_name_map, 'ktisha')
     messages = messages[-messages_count:]
 
-    comix = render_template("base.html", title=title, messages=messages, user1=user_name_id['stan'],
-                                           user2=user_name_id['ktisha'], id1=1, scenes=scenes)
+    messages_list = []
+    for i in range(scenes):
+        messages_list.append(messages[(len(messages)//scenes) *i: (len(messages)//scenes) * (i + 1)])
+
+    comix = render_template("base.html", title=title, messages=messages_list, user1=user_name_id['stan'],
+                                           user2=user_name_id['ktisha'], id1=1, id2=2, id3=3, scenes=scenes)
     return comix
 

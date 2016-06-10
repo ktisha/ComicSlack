@@ -1,4 +1,4 @@
-<scene id="scene3">
+<scene id="scene{{ id3 }}">
     <drawing t="translate(0,31)">
         <line stroke="black">
             <point x="0" y="0"></point>
@@ -8,7 +8,7 @@
     <actor t="translate(71,19) rotate(-2)"
            pose="-11,9|-1,100|-11,85|-11,58|-11,79|-11,59|-16,34|-21,9|-6,34|-1,9|-18,65|-18,45|-6,65|13,69">
         <bubble t="translate(-3,0)" pose="0,0|-12,22|-83,104|45,21|-37,182|-58,162">
-            {% for m in messages %}
+            {% for m in messages[id3-1] %}
                 {% if m['user'] == user1 %}
                     <tspan x="0" y="{{ 2*loop.index-5 }}em">{{ m['text'] }}</tspan>
                 {% endif %}
@@ -18,7 +18,7 @@
     <actor t="translate(195,51) rotate(2)"
            pose="-41,48|-10,105|0,88|0,78|4,68|0,48|-15,20|-16,-15|5,23|10,-16|-11,70|-4,54|17,86|-4,110">
         <bubble t="translate(-2,-9)" pose="0,0|7,33|14,66|-63,30|-52,62|-94,113">
-            {% for m in messages %}
+            {% for m in messages[id3-1] %}
                 {% if m['user'] == user2 %}
                     <tspan x="0" y="{{ 2*loop.index-7 }}em">{{ m['text'] }}</tspan>
                 {% endif %}

@@ -18,7 +18,7 @@
 
         <!-- MESSAGE -->
         <bubble t="translate(9,11)" pose="0,0|-20,10|-81,49|19,66|-21,145|-73,109">
-            {% for m in messages %}
+            {% for m in messages[id1] %}
                 {% if m['user'] == user1 %}
                     <tspan x="0" y="{{ 2*loop.index-5 }}em">{{ m['text'] }}</tspan>
                 {% endif %}
@@ -32,7 +32,7 @@
 
         <!--MESSAGES-->
         <bubble t="translate(-2,-9)" pose="0,0|-14,24|-36,69|27,28|8,72|-35,93">
-            {% for m in messages %}
+            {% for m in messages[id1-1] %}
                 {% if m['user'] == user2 %}
                     <tspan x="0" y="{{ 2*loop.index-7 }}em">{{ m['text'] }}</tspan>
                 {% endif %}
